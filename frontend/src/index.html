@@ -8,45 +8,50 @@
 		<!-- Icons -->
 		<script src="https://kit.fontawesome.com/5980929ce4.js" crossorigin="anonymous"></script>
 	</head>
-	<body class="bg-slate-50">
+	<body class="bg-slate-50 md:overflow-auto">
 		<!-- Header section -->
-		<header class="sticky top-0 bg-slate-50 shadow-md py-2 border-b-2 border-slate-200">
-			<div class="container mx-auto flex-column">
-				<div class="flex justify-between items-center">
-					<h1 class="text-3xl text-orange-500 font-semibold">BStore</h1>
+		<header class="sticky z-50 top-0 bg-slate-50 shadow-md pt-2 border-b-2 border-slate-200">
+			<div class="mx-auto flex-column">
+				<div class="flex justify-between px-2 items-center">
+					<div class="md:hidden relative z-50">
+						<button data-toggle='categories-nav' data-mode='close' id='burger-button' class="relative group">
+							<div class="relative flex overflow-hidden items-center justify-start w-[50px] h-[50px] transform transition-all duration-200">
+								<div class="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden">
+									<div class="bg-orange-500 h-[2px] w-7 transform transition-all duration-300 origin-left group-data-[mode=open]:rotate-[42deg]"></div>
+									<div class="bg-orange-500 h-[2px] w-1/2 rounded transform transition-all duration-300 group-data-[mode=open]:-translate-x-10"></div>
+									<div class="bg-orange-500 h-[2px] w-7 transform transition-all duration-300 origin-left group-data-[mode=open]:-rotate-[42deg]"></div>
+								</div>
+							</div>
+						</button>
+					</div>
+					<h1 class="text-4xl font-serif tracking-widest text-orange-500 w-full text-center">BStore</h1>
 					<ul>
-						<li class=" transition hover:text-orange-500 transition cursor-pointer active:text-orange-400">
+						<li class="text-slate-600 transition hover:text-orange-500 transition cursor-pointer active:text-orange-400">
 							<i class="fa-solid fa-cart-shopping"></i>
 						</li>
 					</ul>
 				</div>
+
 				<!-- Navigation and Search -->
-				<div>
-					<nav class="flex justify-between items-center">
-						<ul class="flex items-center justify-start gap-6">
-							<li class="hover:text-orange-500 transition">
-								<a href="/tienda">Nuestros productos</a>
-							</li>
-							<li class="hover:text-orange-500 transition">
-								<a href="/about">Favoritos</a>
-							</li>
-						</ul>
-						<div class="flex">
-							<input id="buscar" placeholder="Buscar" type="search" class="px-1 border-2 border-r-0 border-slate-200">
-							<div class="px-2 py-1 border-2 border-slate-200 cursor-pointer">
-								<i class="fa-solid fa-magnifying-glass"></i>
-							</div>
+				<nav class="flex px-2 justify-between items-center gap-6 h-12">
+					<ul id="categories-nav" data-open="initial" class="data-[open=initial]:hidden data-[open=true]:animate-[fadein_.2s_ease-in] data-[open=false]:animate-[fadeout_.2s_ease-in_forwards] flex flex-col fixed justify-center items-center inset-0 w-screen h-screen md:flex bg-orange-50 md:w-auto md:h-auto md:relative md:flex-row md:bg-transparent flex-1 md:items-center md:justify-start gap-6">
+					</ul>
+					<div class="flex w-full sm:w-2/3 md:w-auto lg:w-96 sm:mx-auto md:mx-0">
+						<input id="search-product-input" placeholder="Buscar..." type="search" class="rounded-l-2xl w-full px-2 border-2 border-r-0 border-slate-200">
+						<div id='search-product-button' class="px-4 py-1 rounded-r-2xl border-2 border-slate-200 cursor-pointer">
+							<i class="text-slate-500 fa-solid fa-magnifying-glass"></i>
 						</div>
-					</nav>
-				</div>
+					</div>
+				</nav>
 			</div>
 		</header>
 
 		<!-- Hero section -->
-		<div class="bg-[url('https://img.freepik.com/foto-gratis/mujer-sueter-blanco-vertiendo-syrop-verde-vidrio_1157-26606.jpg?w=2000')] bg-center bg-cover bg-no-repeat h-96">
-			<div class="container mx-auto flex h-full items-center">
-				<h2 class="text-white text-4xl">
-					Hero section
+		<div class="bg-fixed bg-[url('https://wallpapercave.com/wp/wp9254840.jpg')] bg-center bg-cover bg-no-repeat h-96">
+			<div class="container mx-auto flex justify-center xl:justify-end h-full items-center">
+				<h2 class="text-white text-4xl text-center xl:text-left font-serif">
+					<div>El alcohol no es la respuesta,</div>
+					<div>pero te hace olvidar la pregunta</div>
 				</h2>
 			</div>
 		</div>
@@ -57,15 +62,15 @@
 				<h3 class="py-8 text-center font-semibold text-slate-700 text-3xl">Nuestros productos</h3>
 			</header>
 			<main class="flex gap-8">
-				<aside class="px-4">
-					<h4 class="text-xl">Categorías</h4>
-					<ul class="py-4">
-						<li class="flex gap-2"><input type="checkbox">Licores</li>
-						<li class="flex gap-2"><input type="checkbox">Gaseosas</li>
-						<li class="flex gap-2"><input type="checkbox">Leches</li>
-					</ul>
-				</aside>
-				<section id="products-section" class="flex-1 flex justify-start flex-wrap gap-x-2 sm:gap-x-12 xl:gap-x-8 gap-y-8">
+				<!-- <aside class="px-4"> -->
+				<!-- 	<h4 class="text-xl">Categorías</h4> -->
+				<!-- 	<ul class="py-4"> -->
+				<!-- 		<li class="flex gap-2"><input type="checkbox">Licores</li> -->
+				<!-- 		<li class="flex gap-2"><input type="checkbox">Gaseosas</li> -->
+				<!-- 		<li class="flex gap-2"><input type="checkbox">Leches</li> -->
+				<!-- 	</ul> -->
+				<!-- </aside> -->
+				<section id="products-section" class="flex-1 flex xl:justify-space-evenly md:justify-around justify-center w-full flex-wrap sm:gap-x-8 gap-y-4 md:gap-y-8">
 					<!-- Card component -->
 				</section>
 			</main>
