@@ -53,16 +53,29 @@
 						</div>
 					</div>
 				</nav>
-				</div>
+			</div>
 		</header>
 
 		<main class="container mx-auto">
 			<header>
-				<h3 id='category-name' class="py-8 capitalize text-center font-semibold text-slate-700 text-3xl">
+				<h3 id='category-name' class="py-8 font-serif capitalize text-center font-semibold text-slate-700 text-3xl">
 				</h3>
 			</header>
 
-			<main class="flex gap-8">
+			<main class="flex flex-col gap-8">
+				<section id="view-options" class="w-full flex justify-between text-slate-700">
+					<div class="flex-1">
+						<div class="border w-fit flex border-2 border-slate-600 cursor-pointer">
+							<label for="view-options-sort" class="py-1 px-3 cursor-pointer bg-slate-600 text-slate-50">Ordenar por</label>
+							<select id="view-options-sort" class="cursor-pointer w-32 py-1 px-1">
+								<option selected value="asc">A - Z</option>
+								<option value="desc">Z - A</option>
+							</select>
+						</div>
+					</div>
+					<div id="view-options-number" class="flex-1 text-center text-lg font-semibold">124 productos</div>
+					<div id="view-options-pagination" class="flex-1 text-right">paginación</div>
+				</section>
 				<section id="products-section" class="flex-1 flex xl:justify-space-evenly md:justify-around justify-center w-full flex-wrap sm:gap-x-8 gap-y-4 md:gap-y-8">
 					<!-- Card component -->
 				</section>
