@@ -17,7 +17,7 @@ searchFuncionality()
 const paramsFromUrl = new URLSearchParams(window.location.search)
 if (!paramsFromUrl.get('id')) {
   renderElement($('#category-name'),
-    () => 'Category No Registrada',
+    () => 'Categoría No Registrada',
     'sync'
   )
 }
