@@ -1,28 +1,36 @@
 import '@/css/style.css'
 import { _xjs } from '@/lib/remi'
-import { renderCategoriesNav, renderProducts } from '@/components'
-import { $, searchFuncionality } from '@/utils'
-import { searchProductsService } from '@/services'
+import { renderCategoriesNav } from '@/components'
+import { searchFuncionality } from '@/utils'
 
-/*----------------------*/
-/* Built in
-/*----------------------*/
+/*-----------------------------------*/
+/* Shared functionality between views
+/*-----------------------------------*/
 renderCategoriesNav()
 
-/*----------------------*/
-/* Custom
-/*----------------------*/
+/*---------------------------------------*/
+/* Main functionality of the current view
+/*---------------------------------------*/
 const paramsFromUrl = new URLSearchParams(window.location.search)
 const searchQuery = paramsFromUrl.get('search_query')
 
 searchFuncionality({ defaultValue: searchQuery })
 
-const getFilteredProducts = async () => {
+/**
+ * Get products that match the search condition
+ */
+const searchProducts = async () => {
   const searchProductInput = $('#search-product-input')
-  const { value } = searchProductInput
-  const { data: filteredProduct } = await searchProductsService(value)
-
-  renderProducts({ data: filteredProduct })
+  const searchData = await searchProductsService(searchProductInput?.value)
+  
+  return searchData
 }
 
-getFilteredProducts()
+/**
+ * Main function of the Results page
+ */
+const resultsPage = async () => {
+  renderProducts({ data: searchProducts() })
+}
+
+resultsPage()

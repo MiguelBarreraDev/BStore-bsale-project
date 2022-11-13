@@ -1,35 +1,33 @@
-import {renderProducts} from "@/components"
-import {searchProductsService} from "@/services"
 import { $ } from "./global-object"
 
-export const searchFuncionality = ({ defaultValue } = {}) => {
+/**
+ * Navigate between different views via a specific path
+ * params {String} path - Destination route of the page
+ */
+const navigate = path => window.location.href = path
+
+/**
+ * Redirect to the results page and set the
+ * events in the DOM
+ */
+const searchFuncionality = ({ defaultValue } = {}) => {
+  const RESULTS_URL = '/pages/results/results.html'
   const searchProductButton = $('#search-product-button')
   const searchProductInput = $('#search-product-input')
 
-  // Insert default value to the input
+  // Insert default value to the input of search type
   searchProductInput.value = defaultValue ?? ''
-
-  const getFilteredProducts = async () => {
-    const searchProductInput = $('#search-product-input')
-    const { value } = searchProductInput
-    const { data: filteredProduct } = await searchProductsService(value)
-
-    renderProducts({ data: filteredProduct })
-  }
-
-
-  searchProductInput.addEventListener('keyup', e => {
+  
+  // Perfom search when user presses enter
+  searchProductInput.addEventListener('keyup', (e) => {
     if (e.keyCode === 13 || e.key === 'Enter') {
-      window.location.href = `/pages/results/results.html?search_query=${searchProductInput.value}`
-      getFilteredProducts()
-      searchProductInput.value = ''
+      navigate(`${RESULTS_URL}?search_query=${searchProductInput.value}`)
     }
   })
 
+  // Perfom search when user clicked in the search button
   searchProductButton.addEventListener('click', () => {
-    window.location.href = `/pages/results/results.html?search_query=${searchProductInput.value}`
-    getFilteredProducts()
-    searchProductInput.value = ''
+    navigate(`${RESULTS_URL}?search_query=${searchProductInput.value}`)
   })
 }
 
