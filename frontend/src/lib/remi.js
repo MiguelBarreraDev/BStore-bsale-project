@@ -7,7 +7,12 @@ export const toElement = (type, { children, ...props }) => {
     element = document.createElement(type)
 
   // Add attributes
-  Object.keys(props).forEach(key => element.setAttribute(key, props[key]))
+  Object.keys(props).forEach(key => {
+    if (key.slice(0, 2) === 'on')
+      element.addEventListener(key.slice(2), props[key])
+    else
+      element.setAttribute(key, props[key])
+  })
 
   // Children
   if (typeof children === 'string')
