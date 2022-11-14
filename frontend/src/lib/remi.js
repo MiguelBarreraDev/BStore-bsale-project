@@ -1,4 +1,10 @@
+/**
+ * Simplify node creation, adding attributes and attaching
+ * events
+ */
 export const toElement = (type, { children, ...props }) => {
+  // TODO: Refactor
+
   // Create element
   let element
   if (type === 'fragment')
@@ -14,7 +20,7 @@ export const toElement = (type, { children, ...props }) => {
       element.setAttribute(key, props[key])
   })
 
-  // Children
+  // Add Childrens
   if (typeof children === 'string')
     element.appendChild(document.createTextNode(children))
   else if (children instanceof Array)
@@ -30,11 +36,15 @@ export const toElement = (type, { children, ...props }) => {
   return element
 }
 
+/**
+ * Simplify the representation of node in the DOM
+ */
 export const renderElement = async (root, component, mode = 'sync') => {
   if (mode === 'sync') root.replaceChildren(component())
   if (mode === 'async') root.replaceChildren(await component())
 }
 
+// Create reference to toElement
 export const _xjs = toElement
 
 export default {

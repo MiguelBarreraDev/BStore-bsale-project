@@ -1,5 +1,8 @@
 import { $ } from "./global-object"
 
+/**
+ * Add responsive design to the category navigation bar
+ */
 const responsiveNavFuncionality = () => {
   const burgerButton = $('#burger-button')
   const categoriesNav = $(`#${burgerButton.dataset['toggle']}`)

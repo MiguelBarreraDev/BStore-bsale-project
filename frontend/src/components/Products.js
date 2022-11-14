@@ -3,6 +3,10 @@ import { productsByCategoryService, productsService } from "@/services"
 import { $ } from "@/utils"
 import ProductCard from "./ProductCard"
 
+/**
+ * create a products-section element that ren represents
+ * a products-section in the dom
+ */
 const Products = async ({ data, categoryId } = {}) => {
   let productsList, dataFromApi
 
@@ -20,6 +24,9 @@ const Products = async ({ data, categoryId } = {}) => {
   })
 }
 
+/**
+ * Render products-section element in the DOM
+ */
 const renderProducts = (data) => {
   renderElement($('#products-section'),
     () => Products(data),

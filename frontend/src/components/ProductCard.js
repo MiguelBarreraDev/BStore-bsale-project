@@ -1,11 +1,17 @@
 import { _xjs } from "@/lib/remi"
 
+/**
+ * Render a product element that represents a product node in the DOM
+ */
 const ProductCard = ({ url_image, name, id, price, discount }) => (
   _xjs('div', {
-    class: `relative flex flex-col justify-between shadow-xl rounded-md shadow-slate-250 w-8/12 sm:max-w-xs h-96 overflow-hidden`,
+    class: `relative flex flex-col justify-between shadow-xl rounded-md
+    shadow-slate-250 w-8/12 sm:max-w-xs h-96 overflow-hidden`,
     children: [
       _xjs('div', {
-        class: `${!discount && 'hidden'} -translate-x-1/2 -translate-y-3/4 -rotate-45 origin-top-right text-md absolute text-center w-4/12 bg-orange-500 text-white`,
+        class: `${!discount && 'hidden'} -translate-x-1/2 -translate-y-3/4
+        -rotate-45 origin-top-right text-md absolute text-center w-4/12
+        bg-orange-500 text-white`,
         children: `-${discount}%`
       }),
       _xjs('img', {
@@ -30,7 +36,9 @@ const ProductCard = ({ url_image, name, id, price, discount }) => (
             children: `S/. ${price}`
           }),
           _xjs('button', {
-            class: 'flex w-fitt gap-2 px-2 mx-auto items-center justify-evenly my-2 py-1 hover:bg-orange-500 transition hover:text-white text-center text-slate-500 border-orange-500 border',
+            class: `flex w-fitt gap-2 px-2 mx-auto items-center justify-evenly
+            my-2 py-1 hover:bg-orange-500 transition hover:text-white
+            text-center text-slate-500 border-orange-500 border`,
             children: [
               _xjs('i', {
                 class: 'fa-solid fa-cart-shopping'
