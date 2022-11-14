@@ -1,7 +1,8 @@
 import '@/css/style.css'
 import { _xjs } from '@/lib/remi'
-import { renderCategoriesNav } from '@/components'
-import { searchFuncionality } from '@/utils'
+import { renderCategoriesNav, renderProducts } from '@/components'
+import { $, searchFuncionality } from '@/utils'
+import {searchProductsService} from '@/services'
 
 /*-----------------------------------*/
 /* Shared functionality between views
@@ -22,15 +23,15 @@ searchFuncionality({ defaultValue: searchQuery })
 const searchProducts = async () => {
   const searchProductInput = $('#search-product-input')
   const searchData = await searchProductsService(searchProductInput?.value)
-  
-  return searchData
+
+  return searchData?.data
 }
 
 /**
  * Main function of the Results page
  */
 const resultsPage = async () => {
-  renderProducts({ data: searchProducts() })
+  renderProducts({ data: await searchProducts() })
 }
 
 resultsPage()

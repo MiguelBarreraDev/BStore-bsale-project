@@ -7,7 +7,7 @@ import { $ } from "./global-object"
 const setProductsNumber = (number) => {
   const productNumberField = $('#view-options-number')
 
-  productNumberField.textContent = `${number} Products`
+  productNumberField.textContent = `${number} Productos`
 }
 
 /**
