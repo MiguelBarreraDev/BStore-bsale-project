@@ -6,7 +6,7 @@ module.exports = {
       keyframes: {
         'fadeout': {
           '0%': { opacity: 1 },
-          '100%': { opacity: 0, display: 'hidden' }
+          '100%': { opacity: 0 }
         }, 
         'fadein': {
           '0%': { opacity: 0 },
