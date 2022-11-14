@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const API_URI = import.meta.env.VITE_API_URI
+const API_URI = import.meta.env.VITE_API_URI ?? 'https://bstore-backend.onrender.com'
 axios.defaults.baseURL = API_URI
 
 /**
