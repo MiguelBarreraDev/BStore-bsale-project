@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const API_URI = 'http://localhost:3000'
+const API_URI = 'https://bstore-backend.onrender.com'
 axios.defaults.baseURL = API_URI
 
 /**
