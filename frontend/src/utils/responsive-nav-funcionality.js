@@ -9,29 +9,30 @@ const responsiveNavFuncionality = () => {
 
   if (window.matchMedia('(min-width: 768px)').matches) {
     categoriesNav.dataset.open = ''
+    burgerButton.dataset.mode = 'close'
   }
 
   window.matchMedia('(min-width: 768px)').addEventListener('change', (e) => {
     if (e.matches){
       categoriesNav.dataset.open = true
-      categoriesNav.classList.remove('hidden')
+      burgerButton.dataset.mode = 'close'
+      $('body').classList.remove('overflow-hidden')
     } else {
       categoriesNav.dataset.open = 'initial'
     } 
   })
 
   burgerButton.addEventListener('click', () => {
-    if (burgerButton.dataset.mode === 'close')
+    if (burgerButton.dataset.mode === 'close') {
+      $('body').classList.add('overflow-hidden')
       burgerButton.dataset.mode = 'open'
-    else
-      burgerButton.dataset.mode = 'close'
-
-    if (burgerButton.dataset.mode === 'open')
       categoriesNav.dataset.open = true
-    else
+    }
+    else {
+      $('body').classList.remove('overflow-hidden')
+      burgerButton.dataset.mode = 'close'
       categoriesNav.dataset.open = false
-
-    $('body').classList.toggle('overflow-hidden')
+    }
   })
 }
 
